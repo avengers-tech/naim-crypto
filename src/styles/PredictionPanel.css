@@ -1,0 +1,159 @@
+.prediction_panel {
+  padding: 20px;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  margin: 20px 0;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.prediction_title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.prediction_content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.prediction_main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: var(--bg-color);
+  border-radius: 6px;
+}
+
+.prediction_signal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signal_label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.signal_value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.prediction_signal.buy .signal_value {
+  color: #4CAF50;
+}
+
+.prediction_signal.sell .signal_value {
+  color: #f44336;
+}
+
+.prediction_signal.hold .signal_value {
+  color: #ff9800;
+}
+
+.prediction_confidence {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confidence_label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.confidence_value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.prediction_details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.detail_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--bg-color);
+  border-radius: 4px;
+}
+
+.detail_label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.detail_value {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.detail_value.positive {
+  color: #4CAF50;
+}
+
+.detail_value.negative {
+  color: #f44336;
+}
+
+.prediction_reasoning {
+  padding: 15px;
+  background-color: var(--bg-color);
+  border-radius: 6px;
+}
+
+.prediction_reasoning h5 {
+  margin: 0 0 10px 0;
+  color: var(--text-color);
+}
+
+.prediction_reasoning ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.prediction_reasoning li {
+  margin-bottom: 5px;
+  color: var(--text-color);
+}
+
+.prediction_disclaimer {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 10px;
+}
+
+.loader_bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
+
+.loader {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--border-color);
+  border-top: 3px solid #EEBC1D;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
