@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tensorflow/tfjs": "^4.22.0",
     "axios": "^1.4.0",
     "chart.js": "^3.5.1",
     "html-react-parser": "^4.0.0",
