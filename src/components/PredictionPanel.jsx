@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import * as tf from "@tensorflow/tfjs";
 import { HistoricalChart } from "../config/api";
 import { CryptoState } from "../CryptoContext";
 import "../styles/PredictionPanel.css";
@@ -15,7 +16,7 @@ const PredictionPanel = ({ coin }) => {
       try {
         const { data } = await axios.get(HistoricalChart(coin.id, 30, currency));
         setHistoricalData(data.prices);
-        analyzeData(data.prices);
+        await analyzeData(data.prices);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching historical data:", error);
@@ -28,8 +29,8 @@ const PredictionPanel = ({ coin }) => {
     }
   }, [coin, currency]);
 
-  const analyzeData = (prices) => {
-    if (!prices || prices.length < 2) return;
+  const analyzeData = async (prices) => {
+    if (!prices || prices.length < 10) return; // Need at least 10 data points for ML
 
     // Get last 24 hours data (assuming hourly data)
     const recentPrices = prices.slice(-24);
@@ -51,9 +52,59 @@ const PredictionPanel = ({ coin }) => {
     // Volume analysis (simplified - using price volatility as proxy)
     const volatility = Math.abs(priceChange24h);
 
+    // ML Prediction using Linear Regression
+    const priceValues = prices.map(p => p[1]);
+    const inputs = [];
+    const outputs = [];
+
+    // Prepare training data: use last 5 prices to predict next price
+    for (let i = 0; i < priceValues.length - 6; i++) {
+      inputs.push(priceValues.slice(i, i + 5));
+      outputs.push(priceValues[i + 5]);
+    }
+
+    if (inputs.length < 5) return; // Not enough data for training
+
+    const inputTensor = tf.tensor2d(inputs);
+    const outputTensor = tf.tensor2d(outputs, [outputs.length, 1]);
+
+    // Create and train linear regression model
+    const model = tf.sequential();
+    model.add(tf.layers.dense({ inputShape: [5], units: 1 }));
+
+    model.compile({ loss: 'meanSquaredError', optimizer: 'adam' });
+
+    await model.fit(inputTensor, outputTensor, { epochs: 100, verbose: 0 });
+
+    // Predict next price
+    const lastPrices = priceValues.slice(-5);
+    const predictionInput = tf.tensor2d([lastPrices]);
+    const prediction = model.predict(predictionInput);
+    const predictedPrice = prediction.dataSync()[0];
+
+    const currentPrice = priceValues[priceValues.length - 1];
+    const mlPredictionChange = ((predictedPrice - currentPrice) / currentPrice) * 100;
+
+    // Clean up tensors
+    inputTensor.dispose();
+    outputTensor.dispose();
+    predictionInput.dispose();
+    prediction.dispose();
+
     let recommendation = "Hold";
     let confidence = "Low";
     let reasoning = [];
+
+    // Incorporate ML prediction into recommendation
+    if (mlPredictionChange > 2) {
+      recommendation = "Buy";
+      confidence = "Medium";
+      reasoning.push(`ML predicts ${mlPredictionChange.toFixed(2)}% price increase`);
+    } else if (mlPredictionChange < -2) {
+      recommendation = "Sell";
+      confidence = "Medium";
+      reasoning.push(`ML predicts ${mlPredictionChange.toFixed(2)}% price decrease`);
+    }
 
     if (priceChange24h > 5) {
       recommendation = "Buy";
@@ -82,6 +133,7 @@ const PredictionPanel = ({ coin }) => {
       recommendation,
       confidence,
       priceChange24h: priceChange24h.toFixed(2),
+      mlPrediction: mlPredictionChange.toFixed(2),
       reasoning,
       maSignal,
       volatility: volatility.toFixed(2)
@@ -128,6 +180,12 @@ const PredictionPanel = ({ coin }) => {
             <span className="detail_label">24h Change:</span>
             <span className={`detail_value ${parseFloat(prediction.priceChange24h) > 0 ? 'positive' : 'negative'}`}>
               {prediction.priceChange24h}%
+            </span>
+          </div>
+          <div className="detail_item">
+            <span className="detail_label">ML Prediction:</span>
+            <span className={`detail_value ${parseFloat(prediction.mlPrediction) > 0 ? 'positive' : 'negative'}`}>
+              {prediction.mlPrediction}%
             </span>
           </div>
           <div className="detail_item">
