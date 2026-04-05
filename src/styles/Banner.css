@@ -1,0 +1,129 @@
+.banner {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: linear-gradient(to bottom, #242424, rgba(148, 180, 2, 0)), url(../assets/banner_bg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner .headline {
+    font-size: 5rem;
+    color: var(--text-color);
+    font-weight: 900;
+    line-height: 0;
+    padding-top: 100px;
+    letter-spacing: 0.5px;
+}
+
+.tagline {
+    color: var(--text-color);
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-wrap: wrap;
+    opacity: 0.8;
+}
+
+.carousel {
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 50px 50px 50px;
+}
+
+.carousel h3 {
+    color: var(--text-color);
+    font-weight: 200;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.carousel_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.coin_image {
+    background-color: white;
+    padding: 10px;
+    border-radius: 100px;
+    margin: 20px 0px;
+}
+
+.coin_symbol {
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.profit_loss {
+    margin-left: 5px;
+    border-radius: 20px;
+    padding: 3px 6px;
+}
+
+.coin_price {
+    font-size: 1.5rem;
+}
+
+
+/* Mobile Potrait */
+@media only screen and (max-width:600px) {
+
+    .banner {
+        padding: 40px 40px 40px 40px;
+    }
+
+    .banner .headline {
+        font-size: 3rem;
+    }
+
+    .tagline {
+        font-size: 0.8rem;
+    }
+
+    .carousel {
+        padding: 10px 30px 30px 30px;
+    }
+
+    .carousel h3 {
+        font-size: 2rem;
+    }
+
+    .coin_image {
+        width: 90px;
+        height: 90px;
+        margin: 0px 0px 10px 0px;
+    }
+
+    .profit_loss {
+        margin-left: 5px;
+        border-radius: 20px;
+        padding: 3px 6px;
+    }
+
+    .coin_price {
+        font-size: 1rem;
+    }
+
+}
+
+/* mobile landscape  */
+@media only screen and (min-width:600px) {}
+
+/* tablet potrait */
+@media only screen and (min-width:768px) {}
+
+/* tablet landscape */
+@media only screen and (min-width:992px) {}
+
+/* Laptop */
+@media only screen and (min-width:1200px) {}

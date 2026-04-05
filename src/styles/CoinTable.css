@@ -1,0 +1,201 @@
+.container {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    color: var(--text-color);
+    font-weight: 200;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.search_coin {
+    width: 50%;
+    padding: 15px 20px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    outline: none;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.search_coin::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.coin_table {
+    margin: 30px;
+    width: 100%;
+    background-color: transparent;
+}
+
+.table_head {
+    background-color: var(--primary-color);
+}
+
+.table_head th {
+    padding: 15px;
+}
+
+.coin_row {
+    text-align: right;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.coin_row:hover {
+    background-color: var(--card-bg);
+}
+
+.coin_cell {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.coin_details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.coin_symbol {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1rem;
+    line-height: 3px;
+}
+
+.coin_name {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.right_pad {
+    padding-right: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.pagination {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.pagination button {
+    justify-content: center;
+    cursor: pointer;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    outline: none;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: var(--border-color);
+}
+
+button.active {
+    background-color: var(--primary-color);
+    color: black;
+    font-weight: 900;
+    border-radius: 100px;
+    padding: 15px 13px 15px 10px;
+    line-height: 0;
+    letter-spacing: 0px;
+}
+
+/* Mobile Potrait */
+@media only screen and (max-width:600px) {
+
+    .container {
+        padding: 0px 20px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .search_coin {
+        width: 80%;
+        margin-top: 0px;
+    }
+
+    .coin_table {
+        width: 100%;
+        font-size: 0.7rem;
+    }
+
+    .table_head th {
+        padding: 15px 5px;
+    }
+
+    .coin_row {
+        font-size: 0.7rem;
+    }
+
+    .coin_cell {
+        padding: 15px 7px 15px 0px;
+        text-align: left;
+    }
+
+    .coin_symbol {
+        font-size: 0.8rem;
+    }
+
+    .coin_name {
+        font-size: 0.8rem;
+        color: #c2c1c1;
+    }
+
+    .right_pad {
+        padding-right: 7px;
+    }
+
+    .pagination {
+        gap: 10px;
+    }
+}
+
+/* mobile landscape  */
+@media only screen and (min-width:600px) {
+    .container {
+        padding: 0px 30px;
+    }
+}
+
+/* tablet potrait */
+@media only screen and (min-width:768px) {
+    .container {
+        padding: 0px 100px;
+    }
+}
+
+/* tablet landscape */
+@media only screen and (min-width:992px) {
+    .container {
+        padding: 0px 100px;
+    }
+}
+
+/* Laptop */
+@media only screen and (min-width:1200px) {
+    .container {
+        padding: 0px 150px;
+    }
+}

@@ -1,0 +1,154 @@
+.nav {
+    background-color: transparent;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav .logo {
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.right_side{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme_toggle {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.theme_toggle:hover {
+    background-color: var(--border-color);
+}
+
+.portfolio_btn {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.portfolio_btn:hover {
+    background-color: #667eea;
+    border-color: #667eea;
+}
+
+.github_btn {
+    background-color: white;
+    padding: 8px 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.github_btn span {
+    font-size: 1rem;
+    color: var(--dark-color);
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.currency_select {
+    cursor: pointer;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 1rem;
+}
+
+.currency_select option {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-email {
+    color: var(--text-color);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.auth_btn {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.auth_btn:hover {
+    background-color: #667eea;
+    border-color: #667eea;
+}
+
+.login_btn {
+    background: linear-gradient(135deg, #f94144 0%, #f3722c 100%);
+    border: none;
+    color: white;
+}
+
+.login_btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.logout_btn:hover {
+    background-color: #f94144;
+    border-color: #f94144;
+}
+
+@media only screen and (max-width:600px) {
+    .nav {
+        padding: 15px 20px;
+    }
+
+    .github_btn span{
+        display: none;
+    }
+    
+}
